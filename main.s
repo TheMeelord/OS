@@ -8,48 +8,10 @@ _ZStL19piecewise_construct:
 	.local	_ZStL8__ioinit
 	.comm	_ZStL8__ioinit,1,1
 	.text
-	.globl	_Z9fibonaccii
-	.type	_Z9fibonaccii, @function
-_Z9fibonaccii:
-.LFB1532:
-	.cfi_startproc
-	endbr64
-	pushq	%rbp
-	.cfi_def_cfa_offset 16
-	.cfi_offset 6, -16
-	movq	%rsp, %rbp
-	.cfi_def_cfa_register 6
-	pushq	%rbx
-	subq	$24, %rsp
-	.cfi_offset 3, -24
-	movl	%edi, -20(%rbp)
-	cmpl	$1, -20(%rbp)
-	jg	.L2
-	movl	-20(%rbp), %eax
-	jmp	.L3
-.L2:
-	movl	-20(%rbp), %eax
-	subl	$1, %eax
-	movl	%eax, %edi
-	call	_Z9fibonaccii
-	movl	%eax, %ebx
-	movl	-20(%rbp), %eax
-	subl	$2, %eax
-	movl	%eax, %edi
-	call	_Z9fibonaccii
-	addl	%ebx, %eax
-.L3:
-	movq	-8(%rbp), %rbx
-	leave
-	.cfi_def_cfa 7, 8
-	ret
-	.cfi_endproc
-.LFE1532:
-	.size	_Z9fibonaccii, .-_Z9fibonaccii
 	.globl	main
 	.type	main, @function
 main:
-.LFB1533:
+.LFB1532:
 	.cfi_startproc
 	endbr64
 	pushq	%rbp
@@ -61,7 +23,7 @@ main:
 	movl	$10, -4(%rbp)
 	movl	-4(%rbp), %eax
 	movl	%eax, %edi
-	call	_Z9fibonaccii
+	call	_Z9fibonaccii@PLT
 	movl	%eax, -4(%rbp)
 	movl	-4(%rbp), %eax
 	movl	%eax, %esi
@@ -77,11 +39,11 @@ main:
 	.cfi_def_cfa 7, 8
 	ret
 	.cfi_endproc
-.LFE1533:
+.LFE1532:
 	.size	main, .-main
 	.type	_Z41__static_initialization_and_destruction_0ii, @function
 _Z41__static_initialization_and_destruction_0ii:
-.LFB1868:
+.LFB1867:
 	.cfi_startproc
 	endbr64
 	pushq	%rbp
@@ -93,9 +55,9 @@ _Z41__static_initialization_and_destruction_0ii:
 	movl	%edi, -4(%rbp)
 	movl	%esi, -8(%rbp)
 	cmpl	$1, -4(%rbp)
-	jne	.L8
+	jne	.L5
 	cmpl	$65535, -8(%rbp)
-	jne	.L8
+	jne	.L5
 	leaq	_ZStL8__ioinit(%rip), %rax
 	movq	%rax, %rdi
 	call	_ZNSt8ios_base4InitC1Ev@PLT
@@ -106,17 +68,17 @@ _Z41__static_initialization_and_destruction_0ii:
 	movq	_ZNSt8ios_base4InitD1Ev@GOTPCREL(%rip), %rax
 	movq	%rax, %rdi
 	call	__cxa_atexit@PLT
-.L8:
+.L5:
 	nop
 	leave
 	.cfi_def_cfa 7, 8
 	ret
 	.cfi_endproc
-.LFE1868:
+.LFE1867:
 	.size	_Z41__static_initialization_and_destruction_0ii, .-_Z41__static_initialization_and_destruction_0ii
-	.type	_GLOBAL__sub_I__Z9fibonaccii, @function
-_GLOBAL__sub_I__Z9fibonaccii:
-.LFB1869:
+	.type	_GLOBAL__sub_I_main, @function
+_GLOBAL__sub_I_main:
+.LFB1868:
 	.cfi_startproc
 	endbr64
 	pushq	%rbp
@@ -131,11 +93,11 @@ _GLOBAL__sub_I__Z9fibonaccii:
 	.cfi_def_cfa 7, 8
 	ret
 	.cfi_endproc
-.LFE1869:
-	.size	_GLOBAL__sub_I__Z9fibonaccii, .-_GLOBAL__sub_I__Z9fibonaccii
+.LFE1868:
+	.size	_GLOBAL__sub_I_main, .-_GLOBAL__sub_I_main
 	.section	.init_array,"aw"
 	.align 8
-	.quad	_GLOBAL__sub_I__Z9fibonaccii
+	.quad	_GLOBAL__sub_I_main
 	.hidden	__dso_handle
 	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

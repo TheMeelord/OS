@@ -1,24 +1,27 @@
 CC = g++
 CFLAGS = -std=c++11 -Wall -pedantic
-SOURCE = main.cpp
+TARGET = main
+SOURCES = main.cpp fibonacci.cpp
+HEADERS = fibonacci.h
 
 ifeq ($(OS),Windows_NT)
 	RM = del
-	TARGET = main.exe
+	EXECUTABLE = $(TARGET).exe
 else
 	RM = rm
-	TARGET = main
+	EXECUTABLE = $(TARGET)
 endif
 
-all:
-	$(CC) $(CFLAGS) -x c++ -o $(TARGET) $(SOURCE)
+all: $(TARGET)
+
+$(TARGET): $(SOURCES) $(HEADERS)
+	$(CC) $(CFLAGS) -o $(EXECUTABLE) $(SOURCES)
 
 clean:
-	echo $(OS)
-	$(RM) ./$(TARGET) ./$(basename $(SOURCE)).s
+	$(RM) $(EXECUTABLE)
 
-run: clean all
-	./$(TARGET)
+run: all
+	./$(EXECUTABLE)
 
-asm:
-	$(CC) $(CFLAGS) -x c++ -S $(SOURCE) -o $(basename $(SOURCE)).s
+asm: $(SOURCES)
+	$(CC) $(CFLAGS) -S $(SOURCES)
